@@ -1,2 +1,3 @@
-# smtnkc.github.io
-Personal Website
+# Samet's Personal Website
+
+Built with HTML + Tailwind · Hosted on GitHub Pages

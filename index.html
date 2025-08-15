@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="https://raw.githubusercontent.com/smtnkc/smtnkc.github.io/refs/heads/main/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Samet Tenekeci</title>
+  <meta name="description" content="Academic one-page CV and portfolio of Samet Tenekeci (NLP, bioinformatics, computational biology, software engineering)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{ --fg:#0f172a; --muted:#475569; }
+    html{ scroll-behavior:smooth }
+    @media print {
+      .no-print{ display:none !important }
+      body{ font-size:12px }
+      a[href]:after{ content:"" }
+      .page{ box-shadow:none; border:none }
+    }
+  </style>
+  <script>
+    // Tailwind config (kept minimal)
+    tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] } } } };
+  </script>
+  <!-- Structured data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Samet Tenekeci",
+      "jobTitle": "NLP and Bioinformatics Researcher",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Izmir Institute of Technology"
+      },
+      "url": "https://smtnkc.github.io/",
+      "sameAs": [
+        "https://scholar.google.com/citations?user=E6tamNsAAAAJ&hl=en", 
+        "https://orcid.org/0000-0001-8875-4111",
+        "https://github.com/smtnkc",
+        "https://www.linkedin.com/in/smtnkc/"
+      ]
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <!-- Header -->
+  <header class="hidden sm:block sm:sticky sm:top-0 sm:z-40 sm:backdrop-blur sm:bg-white/70 sm:border-b sm:border-slate-200 no-print">
+  <nav class="mx-auto max-w-4xl px-4 py-3 flex items-center gap-4 text-sm text-slate-700">
+    <a href="#about" class="hover:text-slate-900">About</a>
+    <a href="#education" class="hover:text-slate-900">Education</a>
+    <a href="#experience" class="hover:text-slate-900">Experience</a>
+    <a href="#projects" class="hover:text-slate-900">Projects</a>
+    <a href="#publications" class="hover:text-slate-900">Publications</a>
+    <a href="#skills" class="hover:text-slate-900">Skills</a>
+    <a href="#organizations" class="hover:text-slate-900">Organizations</a>
+    <a href="#contact" class="ml-auto inline-flex items-center gap-2 rounded-xl border px-3 py-1.5 hover:bg-slate-100">Contact</a>
+  </nav>
+</header>
+
+  <main class="mx-auto max-w-4xl px-4 py-8">
+    <section id="about" class="page bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+      <div class="flex flex-col sm:flex-row sm:items-center gap-6">
+        <div class="grow">
+          <h1 class="text-3xl font-semibold tracking-tight">Samet Tenekeci</h1>
+          <p class="mt-1 text-slate-600">NLP & Bioinformatics Researcher</p>
+          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
+            I hold a PhD in Computer Engineering with a focus on natural language processing and bioinformatics.
+            As a member of two research groups, I have developed dual expertise in computational biology and software engineering,
+            contributing to academic and industrial projects. My expertise spans interdisciplinary research, large-scale data analysis,
+            multimodal learning, complex networks, graph neural networks, and automated software sizing.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <a class="inline-flex items-center gap-2 rounded-xl bg-slate-900 text-white px-3 py-1.5 text-sm hover:bg-slate-800" href="./CV.pdf" download>Download CV (PDF)</a>
+            <a class="inline-flex items-center gap-2 rounded-xl border px-3 py-1.5 text-sm hover:bg-slate-100" href="#publications">Publications</a>
+            <a class="inline-flex items-center gap-2 rounded-xl border px-3 py-1.5 text-sm hover:bg-slate-100" href="#projects">Projects</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- Education -->
+<section id="education" class="mt-6 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+  <h2 class="text-xl font-semibold">Education</h2>
+  <ul class="mt-4 space-y-4">
+    <li class="flex items-start justify-between gap-8">
+      <div>
+        <div class="font-medium text-base">PhD, Computer Engineering</div>
+        <div class="text-sm text-slate-600">Izmir Institute of Technology</div>
+        <div class="mt-1 text-xs text-slate-500 flex flex-col gap-1">
+          <span>GPA: 4.00 / 4.00</span>
+          <span>Thesis: <span class="italic">"Modeling Viral Evolution with Natural Language Processing"</span></span>
+        </div>
+      </div>
+      <div class="text-sm text-slate-500 whitespace-nowrap">2019 – 2025</div>
+    </li>
+    <li class="flex items-start justify-between gap-8">
+      <div>
+        <div class="font-medium text-base">MSc, Computer Engineering</div>
+        <div class="text-sm text-slate-600">Dokuz Eyl&#252;l University</div>
+        <div class="mt-1 text-xs text-slate-500 flex flex-col gap-1">
+          <span>GPA: 3.86 / 4.00</span>
+          <span>Thesis: <span class="italic">"Discovering Disease-Causing Genes by Network Analysis"</span></span>
+        </div>
+      </div>
+      <div class="text-sm text-slate-500 whitespace-nowrap">2016 – 2019</div>
+    </li>
+    <li class="flex items-start justify-between gap-8">
+      <div>
+        <div class="font-medium text-base">BSc, Computer Engineering</div>
+        <div class="text-sm text-slate-600">Izmir University</div>
+        <div class="mt-1 text-xs text-slate-500 flex flex-col gap-1">
+          <span>GPA: 3.23 / 4.00</span>
+          <span>Graduated with honor degree.</span>
+        </div>
+      </div>
+      <div class="text-sm text-slate-500 whitespace-nowrap">2009 – 2014</div>
+    </li>
+  </ul>
+</section>
+
+
+
+    <!-- Experience -->
+    <section id="experience" class="mt-6 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+      <h2 class="text-xl font-semibold">Experience</h2>
+      <ul class="mt-4 space-y-3">
+        <li class="flex items-start justify-between gap-8">
+          <div>
+            <div class="font-medium text-base">Founder</div>
+            <div class="text-sm text-slate-600">NeuronAct</div>
+            <ul class="mt-1 text-xs text-slate-500 list-disc list-inside space-y-0.5">
+              <li>Developing custom AI models, assistants, and agents for businesses and research groups</li>
+              <li>Consulting for businesses on AI adoption and transformation</li>
+            </ul>
+          </div>
+          <div class="text-sm text-slate-500 whitespace-nowrap">2025 – Present</div>
+        </li>
+        <li class="flex items-start justify-between gap-8">
+          <div>
+            <div class="font-medium text-base">Research Assistant / Lecturer</div>
+            <div class="text-sm text-slate-600">Izmir Institute of Technology</div>
+            <ul class="mt-1 text-xs text-slate-500 list-disc list-inside space-y-0.5">
+              <li>Teaching undergraduate and graduate level courses as a lecturer</li>
+              <li>Conducting research in Data Analytics Research Group</li>
+              <li>Conducting research in Software Engineering & Artificial Intelligence Research Group</li>
+              <li>Assisted 10 different computer science courses as a research assistant</li>
+              <li>Led departmental organizational tasks as head research assistant</li>
+            </ul>
+          </div>
+          <div class="text-sm text-slate-500 whitespace-nowrap">2018 – Present</div>
+        </li>
+        <li class="flex items-start justify-between gap-8">
+          <div>
+            <div class="font-medium text-base">Software Engineer</div>
+            <div class="text-sm text-slate-600">AirTies Wireless Networks</div>
+            <ul class="mt-1 text-xs text-slate-500 list-disc list-inside space-y-0.5">
+              <li>Designed and implemented client-specific features for access points</li>
+              <li>Resolved large-scale device overheating issues in production</li>
+            </ul>
+          </div>
+          <div class="text-sm text-slate-500 whitespace-nowrap">2017 – 2018</div>
+        </li>
+        <li class="flex items-start justify-between gap-8">
+          <div>
+            <div class="font-medium text-base">Teaching Assistant</div>
+            <div class="text-sm text-slate-600">Izmir University</div>
+            <ul class="mt-1 text-xs text-slate-500 list-disc list-inside space-y-0.5">
+              <li>Assisted core computer science courses as a teaching assistant</li>
+            </ul>
+          </div>
+          <div class="text-sm text-slate-500 whitespace-nowrap">2013 – 2014</div>
+        </li>
+        <li class="flex items-start justify-between gap-8">
+          <div>
+            <div class="font-medium text-base">Software Engineer</div>
+            <div class="text-sm text-slate-600">BroadAngle</div>
+            <ul class="mt-1 text-xs text-slate-500 list-disc list-inside space-y-0.5">
+              <li>Developed UI/UX for a health and fitness application (DDP Yoga).</li>
+            </ul>
+          </div>
+          <div class="text-sm text-slate-500 whitespace-nowrap">2013 – 2014</div>
+        </li>
+      </ul>
+    </section>
+
+
+<!-- Projects -->
+<section id="projects" class="mt-6 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+  <h2 class="text-xl font-semibold">Projects</h2>
+  <div class="mt-4 grid sm:grid-cols-2 gap-4">
+
+    <article class="rounded-2xl border p-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-medium text-base">DentAI</h3>
+        <span class="px-2 py-0.5 text-xs rounded-full bg-slate-100 border text-slate-600">Proprietary</span>
+      </div>
+      <p class="text-sm text-slate-700 mt-3">
+        Used graph convolutional networks for 3D dental model segmentation. Defined requirements and led software development and management activities. Coordinated a team of AI engineers and dentists.
+      </p>
+      <p class="text-xs text-slate-500 mt-2">Python, PyTorch, HTML, CSS, JS, Git, Blender, MeshLab</p>
+    </article>
+
+    <article class="rounded-2xl border p-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-medium text-base">
+          AI-Estimator
+        </h3>
+        <span class="px-2 py-0.5 text-xs rounded-full bg-slate-100 border text-slate-600">Proprietary</span>
+      </div>
+      <p class="text-sm text-slate-700 mt-3">
+        Curated datasets, trained and deployed task-specific BERT models. Conducted the project proposal and industrial case studies. Funded by the Scientific and Technological Research Council of Türkiye.
+      </p>
+      <p class="text-xs text-slate-500 mt-2">Python, PyTorch, Google Vertex AI, HTML, CSS, JS, Git, Docker</p>
+    </article>
+
+    <article class="rounded-2xl border p-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-medium text-base">
+          <a href="https://github.com/smtnkc/CoV-SNN" target="_blank" class="text-blue-600 hover:underline">CoV-SNN</a>
+        </h3>
+        <span class="px-2 py-0.5 text-xs rounded-full bg-green-100 border text-green-700">Open-Source</span>
+      </div>
+      <p class="text-sm text-slate-700 mt-3">
+        Developed a task-specific transformer-based protein language model. Curated datasets, configured workstations, and deployed AI models. Achieved 97% accuracy and 125× speedup in escape prediction. Funded by the Council of Higher Education of Türkiye.
+      </p>
+      <p class="text-xs text-slate-500 mt-2">Python, PyTorch, Streamlit, HTML, CSS, JS, Git</p>
+    </article>
+
+    <article class="rounded-2xl border p-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-medium text-base">
+          <a href="https://github.com/smtnkc/go-cluster" target="_blank" class="text-blue-600 hover:underline">GO-cluster</a>
+        </h3>
+        <span class="px-2 py-0.5 text-xs rounded-full bg-green-100 border text-green-700">Open-Source</span>
+      </div>
+      <p class="text-sm text-slate-700 mt-3">
+        Integrated gene expression, protein–protein interaction, and gene ontology data. Identified 22 shared genes in three metabolic disorders. Published the method and results in IEEE Transactions on Computational Biology and Bioinformatics.
+      </p>
+      <p class="text-xs text-slate-500 mt-2">R, Python, Git</p>
+    </article>
+
+    <article class="rounded-2xl border p-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-medium text-base">
+          <a href="https://github.com/smtnkc/GCN4EPI" target="_blank" class="text-blue-600 hover:underline">GCN4EPI</a>
+        </h3>
+        <span class="px-2 py-0.5 text-xs rounded-full bg-green-100 border text-green-700">Open-Source</span>
+      </div>
+      <p class="text-sm text-slate-700 mt-3">
+        Designed a multimodal model using graph convolutional neural networks. Integrated DNA sequence and Enhancer–Promoter Interaction data. Published in Computational Biology and Chemistry.
+      </p>
+      <p class="text-xs text-slate-500 mt-2">Python, PyTorch, TensorFlow, Bash, Git</p>
+    </article>
+
+    <article class="rounded-2xl border p-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-medium text-base">
+          <a href="https://github.com/smtnkc/FastSbR" target="_blank" class="text-blue-600 hover:underline">FastSbR</a>
+        </h3>
+        <span class="px-2 py-0.5 text-xs rounded-full bg-green-100 border text-green-700">Open-Source</span>
+      </div>
+      <p class="text-sm text-slate-700 mt-3">
+        Developed global optimization algorithms for an NP-hard problem. Achieved 5.6-fold speedup compared to baselines. Supported by the Scientific and Technological Research Council of Türkiye.
+      </p>
+      <p class="text-xs text-slate-500 mt-2">C, MPI, OpenMP, Bash, SLURM, Git</p>
+    </article>
+  </div>
+</section>
+
+
+<!-- Publications -->
+<section id="publications" class="mt-6 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+  <h2 class="text-xl font-semibold">Publications</h2>
+  <ol class="mt-4 space-y-3 text-sm text-slate-800 list-decimal list-inside">
+    <li>
+      <u>Tenekeci S.</u>, Sezgin E., Tekir S. <a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8857" target="_blank" class="font-normal text-blue-600 hover:underline">A contrastive learning framework for efficient viral escape prediction</a>. IEEE Transactions on Computational Biology and Bioinformatics (Under Review).
+      <span class="ml-2 px-2 py-0.5 text-xs rounded-full bg-slate-100 border">Journal</span>
+    </li>
+    <li>
+      <u>Tenekeci S.</u>, Ünlü H., Gül B.A., Keleş D., Küçük M., Demirörs O. <a href="https://doi.org/10.21203/rs.3.rs-7153894/v1" target="_blank" class="font-normal text-blue-600 hover:underline">Automating software size measurement from code using language models</a>. Automated Software Engineering (Under Review).
+      <span class="ml-2 px-2 py-0.5 text-xs rounded-full bg-slate-100 border">Journal</span>
+    </li>
+    <li>
+      <u>Tenekeci S.</u>, Ünlü H. <a href="https://dl.acm.org/journal/TOCE" target="_blank" class="font-normal text-blue-600 hover:underline">Peer review and assessment improves software engineering education: Insights from multiple survey studies</a>. ACM Transactions on Computing Education (Under Review).
+      <span class="ml-2 px-2 py-0.5 text-xs rounded-full bg-slate-100 border">Journal</span>
+    </li>
+    <li>
+      Ünlü H., <u>Tenekeci S.</u>, Kennouche D., Demirörs O. <a href="https://www.sciencedirect.com/journal/journal-of-systems-and-software" target="_blank" class="font-normal text-blue-600 hover:underline">Automating software size measurement with language models: Insights from industrial case studies</a>. Journal of Systems and Software (Under Review).
+      <span class="ml-2 px-2 py-0.5 text-xs rounded-full bg-slate-100 border">Journal</span>
+    </li>
+    <li>
+      <u>Tenekeci S.</u>, Erciyes K. <a href="https://link.springer.com/journal/10898" target="_blank" class="font-normal text-blue-600 hover:underline">Distributed approximation algorithms for sorting unsigned genomes by reversals</a>. Journal of Global Optimization (Under Review).
+      <span class="ml-2 px-2 py-0.5 text-xs rounded-full bg-slate-100 border">Journal</span>
+    </li>
+    <li>
+      <u>Tenekeci S.</u>, Ünlü H., Keçeci B., İncir M.E., Demirörs O. <a href="https://journals.tubitak.gov.tr/elektrik/" target="_blank" class="font-normal text-blue-600 hover:underline">Automated software size measurement using multilingual domain-adapted language models</a>. Turkish Journal of Electrical Engineering and Computer Sciences (Under Review).
+      <span class="ml-2 px-2 py-0.5 text-xs rounded-full bg-slate-100 border">Journal</span>
+    </li>
+    <li>
+      <u>Tenekeci S.</u>, Tekir S. <a href="https://doi.org/10.1016/j.compbiolchem.2024.108040" target="_blank" class="font-normal text-blue-600 hover:underline">Identifying promoter and enhancer sequences by graph convolutional networks</a>. Computational Biology and Chemistry, 2024.
+      <span class="ml-2 px-2 py-0.5 text-xs rounded-full bg-slate-100 border">Journal</span>
+    </li>
+    <li>
+      Ünlü H., <u>Tenekeci S.</u>, Çiftçi C., Oral İ.B., Atalay T., Hacaloğlu T., Musaoğlu B., Demirörs O. <a href="https://doi.org/10.1109/SEAA64295.2024.00036" target="_blank" class="font-normal text-blue-600 hover:underline">Predicting software functional size using natural language processing: An exploratory case study</a>. 50th Euromicro Conference on Software Engineering and Advanced Applications, 2024, Paris, France.
+      <span class="ml-2 px-2 py-0.5 text-xs rounded-full bg-slate-100 border">Conference</span>
+    </li>
+    <li>
+      <u>Tenekeci S.</u>, Ünlü H., Dikenelli E., Selçuk U., Kılınç Soylu G., Demirörs O. <a href="https://ceur-ws.org/Vol-3852/paper1.pdf" target="_blank" class="font-normal text-blue-600 hover:underline">Predicting software size and effort from code using natural language processing</a>. 33rd International Workshop on Software Measurement (IWSM) & 18th International Conference on Software Process and Product Measurement (Mensura), 2024, Montréal, Canada.
+      <span class="ml-2 px-2 py-0.5 text-xs rounded-full bg-slate-100 border">Conference</span>
+    </li>
+    <li>
+      Tekir S., Güzel A., <u>Tenekeci S.</u>, Haman B.U. <a href="https://doi.org/10.18653/v1/2023.latechclfl-1.3" target="_blank" class="font-normal text-blue-600 hover:underline">Quote detection: A new task and dataset for NLP</a>. 7th Joint SIGHUM Workshop on Computational Linguistics for Cultural Heritage, Social Sciences, Humanities and Literature, 2023, Dubrovnik, Croatia.
+      <span class="ml-2 px-2 py-0.5 text-xs rounded-full bg-slate-100 border">Conference</span>
+    </li>
+    <li>
+      Sezerer E., <u>Tenekeci S.</u>, Acar A., Baloğlu B., Tekir S. <a href="https://doi.org/10.1142/S0218194021500479" target="_blank" class="font-normal text-blue-600 hover:underline">Author reputation measurement on question and answer sites by the classification of author-generated content</a>. International Journal on Artificial Intelligence Tools, 2021.
+      <span class="ml-2 px-2 py-0.5 text-xs rounded-full bg-slate-100 border">Journal</span>
+    </li>
+    <li>
+      Ünlü H., <u>Tenekeci S.</u>, Yıldız A., Demirörs O. <a href="https://doi.org/10.1109/SEAA53835.2021.00038" target="_blank" class="font-normal text-blue-600 hover:underline">Event oriented vs object oriented analysis for microservice architecture: An exploratory case study</a>. 47th Euromicro Conference on Software Engineering and Advanced Applications, 2021, Palermo, Italy.
+      <span class="ml-2 px-2 py-0.5 text-xs rounded-full bg-slate-100 border">Conference</span>
+    </li>
+    <li>
+      Çiftçi O., <u>Tenekeci S.</u>, Ülgentürk C. <a href="https://doi.org/10.5220/0010678600003064" target="_blank" class="font-normal text-blue-600 hover:underline">Artist recommendation based on association rule mining and community detection</a>. 13th International Joint Conference on Knowledge Discovery, Knowledge Engineering and Knowledge Management, 2021, Valletta, Malta.
+      <span class="ml-2 px-2 py-0.5 text-xs rounded-full bg-slate-100 border">Conference</span>
+    </li>
+    <li>
+      <u>Tenekeci S.</u>, Işık Z. <a href="https://doi.org/10.1109/TCBB.2020.2993301" target="_blank" class="font-normal text-blue-600 hover:underline">Integrative biological network analysis to identify shared genes in metabolic disorders</a>. IEEE/ACM Transactions on Computational Biology and Bioinformatics, 2020.
+      <span class="ml-2 px-2 py-0.5 text-xs rounded-full bg-slate-100 border">Journal</span>
+    </li>
+  </ol>
+</section>
+
+
+<!-- Skills -->
+<section id="skills" class="mt-6 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+  <h2 class="text-xl font-semibold">Skills</h2>
+
+  <div class="mt-3 text-sm">
+    <div class="font-medium">Areas</div>
+    <ul class="mt-1 text-slate-700 list-disc list-outside pl-4 flex flex-wrap gap-x-5 gap-y-1">
+      <li>Natural language processing</li>
+      <li>Bioinformatics</li>
+      <li>Computational biology</li>
+      <li>Machine learning</li>
+      <li>Data science</li>
+      <li>Graph neural networks</li>
+      <li>Complex networks</li>
+      <li>High-performance computing</li>
+      <li>Parallel algorithms</li>
+      <li>Software engineering</li>
+      <li>Software sizing</li>
+      <li>Sequence analysis</li>
+      <li>Interdisciplinary research</li>
+    </ul>
+
+    <div class="mt-4 font-medium">Tech</div>
+    <ul class="mt-1 text-slate-700 list-disc list-outside pl-4 flex flex-wrap gap-x-5 gap-y-1">
+      <li>Python</li>
+      <li>PyTorch</li>
+      <li>TensorFlow</li>
+      <li>NumPy</li>
+      <li>Pandas</li>
+      <li>R</li>
+      <li>C</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>Git</li>
+      <li>Docker</li>
+      <li>Anaconda</li>
+      <li>SLURM</li>
+      <li>Google Vertex AI</li>
+      <li>Hugging Face</li>
+      <li>Streamlit</li>
+      <li>Bash</li>
+      <li>Linux</li>
+    </ul>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- Organizations -->
+<section id="organizations" class="mt-6 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+  <h2 class="text-xl font-semibold">Organizations</h2>
+  <ul class="mt-4 space-y-3">
+    <li class="flex items-start justify-between gap-8">
+      <div>
+        <div class="font-medium text-base">Data Analytics Research Group</div>
+        <ul class="mt-1 text-xs text-slate-500 list-disc list-inside space-y-0.5">
+          <li>Led the development team</li>
+          <li>Built and managed GPU workstations</li>
+        </ul>
+      </div>
+      <div class="text-sm text-slate-500 whitespace-nowrap">
+        <a href="https://darg.iyte.edu.tr/people/" target="_blank" class="text-blue-600 hover:underline">darg.iyte.edu.tr</a>
+      </div>
+    </li>
+    <li class="flex items-start justify-between gap-8">
+      <div>
+        <div class="font-medium text-base">Software Engineering &amp; Artificial Intelligence Research Group</div>
+        <ul class="mt-1 text-xs text-slate-500 list-disc list-inside space-y-0.5">
+          <li>Led the AI team</li>
+          <li>Contributed to several publications</li>
+        </ul>
+      </div>
+      <div class="text-sm text-slate-500 whitespace-nowrap">
+        <a href="https://www.softw-ai.com/" target="_blank" class="text-blue-600 hover:underline">softw-ai.com</a>
+      </div>
+    </li>
+    <li class="flex items-start justify-between gap-8">
+      <div>
+        <div class="font-medium text-base">GitHub Education</div>
+        <ul class="mt-1 text-xs text-slate-500 list-disc list-inside space-y-0.5">
+          <li>Organized workshops as the first Campus Advisor in Türkiye</li>
+        </ul>
+      </div>
+      <div class="text-sm text-slate-500 whitespace-nowrap">
+        <a href="https://github.blog/developer-skills/career-growth/introducing-the-new-campus-advisors-program/" target="_blank" class="text-blue-600 hover:underline">github.blog</a>
+      </div>
+    </li>
+  </ul>
+</section>
+
+
+
+    <!-- Contact -->
+    <section id="contact" class="mt-6 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+      <h2 class="text-xl font-semibold">Contact</h2>
+      <div class="mt-2 text-sm text-slate-800">
+        <p><span class="font-medium">Email:</span> <a class="text-blue-600 hover:underline" href="mailto:samettenekeci@gmail.com">samettenekeci@gmail.com</a></p>
+        <p><span class="font-medium">GitHub:</span> <a class="text-blue-600 hover:underline" target="_blank" href="https://github.com/smtnkc">@smtnkc</a></p>
+        <p><span class="font-medium">LinkedIn:</span> <a class="text-blue-600 hover:underline" target="_blank" href="https://www.linkedin.com/in/smtnkc/">@smtnkc</a></p>
+        <p><span class="font-medium">Twitter:</span> <a class="text-blue-600 hover:underline" target="_blank" href="https://twitter.com/smtnkc">@smtnkc</a></p>
+        <p><span class="font-medium">Google Scholar:</span> <a class="text-blue-600 hover:underline" target="_blank" href="https://scholar.google.com.tr/citations?user=E6tamNsAAAAJ&hl=en">Profile</a></p>
+        <p><span class="font-medium">ORCID:</span> <a class="text-blue-600 hover:underline" target="_blank" href="https://orcid.org/0000-0001-8875-4111">0000-0001-8875-4111</a></p>
+      </div>
+    </section>
+
+    <footer class="mt-6 pb-12 text-center text-xs text-slate-500">
+      © <span id="y"></span> Samet Tenekeci · Built with HTML + Tailwind · Hosted on GitHub Pages
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
