@@ -48,7 +48,7 @@
 <body class="bg-slate-50 text-slate-900">
   <!-- Header -->
   <header class="hidden sm:block sm:sticky sm:top-0 sm:z-40 sm:backdrop-blur sm:bg-white/70 sm:border-b sm:border-slate-200 no-print">
-  <nav class="mx-auto max-w-4xl px-4 py-3 flex items-center gap-4 text-sm text-slate-700">
+  <nav class="mx-auto max-w-4xl px-4 py-5 flex justify-center gap-6 text-sm text-slate-700">
     <a href="#about" class="hover:text-slate-900">About</a>
     <a href="#education" class="hover:text-slate-900">Education</a>
     <a href="#experience" class="hover:text-slate-900">Experience</a>
@@ -56,7 +56,6 @@
     <a href="#publications" class="hover:text-slate-900">Publications</a>
     <a href="#skills" class="hover:text-slate-900">Skills</a>
     <a href="#organizations" class="hover:text-slate-900">Organizations</a>
-    <a href="#contact" class="ml-auto inline-flex items-center gap-2 rounded-xl border px-3 py-1.5 hover:bg-slate-100">Contact</a>
   </nav>
 </header>
 
@@ -73,9 +72,8 @@
             multimodal learning, complex networks, graph neural networks, and automated software sizing.
           </p>
           <div class="mt-4 flex flex-wrap gap-2">
-            <a class="inline-flex items-center gap-2 rounded-xl bg-slate-900 text-white px-3 py-1.5 text-sm hover:bg-slate-800" href="./CV.pdf" download>Download CV (PDF)</a>
-            <a class="inline-flex items-center gap-2 rounded-xl border px-3 py-1.5 text-sm hover:bg-slate-100" href="#publications">Publications</a>
-            <a class="inline-flex items-center gap-2 rounded-xl border px-3 py-1.5 text-sm hover:bg-slate-100" href="#projects">Projects</a>
+            <a class="inline-flex items-center gap-2 rounded-xl border px-3 py-1.5 text-sm hover:bg-slate-100" href="./CV.pdf" download>Download CV</a>
+            <a class="inline-flex items-center gap-2 rounded-xl border px-3 py-1.5 text-sm hover:bg-slate-100" href="#contact">Contact</a>
           </div>
         </div>
       </div>
@@ -467,6 +465,29 @@
       © <span id="y"></span> Samet Tenekeci · Built with HTML + Tailwind · Hosted on GitHub Pages
     </footer>
   </main>
+
+  <!-- Scroll to Top Button (only visible on mobile) -->
+  <button id="scrollTopBtn" 
+    class="sm:hidden fixed bottom-6 right-6 bg-slate-900 text-white p-3 rounded-xl shadow-lg hover:bg-slate-800 focus:outline-none hidden">
+    ↑
+  </button>
+
+  <script>
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 200) {
+        scrollTopBtn.classList.remove("hidden");
+      } else {
+        scrollTopBtn.classList.add("hidden");
+      }
+    });
+
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
