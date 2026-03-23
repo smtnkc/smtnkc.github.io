@@ -868,8 +868,7 @@
     <section id="contact" class="mt-6 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
       <h2 class="text-xl font-semibold">Contact</h2>
       <div class="mt-2 text-sm text-slate-800">
-        <p><span class="font-medium">Email:</span> <a class="text-blue-600 hover:underline"
-            href="mailto:samettenekeci@gmail.com">samettenekeci@gmail.com</a></p>
+        <p><span class="font-medium">Email:</span> <a id="email-link" class="text-blue-600 hover:underline"></a></p>
         <p><span class="font-medium">GitHub:</span> <a class="text-blue-600 hover:underline" target="_blank"
             href="https://github.com/smtnkc">@smtnkc</a></p>
         <p><span class="font-medium">LinkedIn:</span> <a class="text-blue-600 hover:underline" target="_blank"
@@ -913,6 +912,17 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+    const user = "samettenekeci";
+    const domain = "gmail.com";
+
+    const email = user + "@" + domain;
+
+    const link = document.getElementById("email-link");
+    link.href = "mailto:" + email;
+    link.textContent = email;
   </script>
 </body>
 
