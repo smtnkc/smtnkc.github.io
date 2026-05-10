@@ -84,23 +84,54 @@
   </header>
 
   <main class="mx-auto max-w-4xl px-4 py-8">
-    <section id="about" class="page bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
-      <div class="flex flex-col sm:flex-row sm:items-center gap-6">
-        <div class="grow">
-          <h1 class="text-3xl font-semibold tracking-tight">Samet Tenekeci</h1>
-          <p class="mt-1 text-slate-600">Applied AI Scientist ⋅ Machine Learning ⋅ Computational Biology</p>
-          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
+    <section id="about"
+      class="page bg-white rounded-3xl shadow-sm border border-slate-200 p-8 sm:p-10 relative overflow-hidden">
+      <!-- Decorative background element -->
+      <div
+        class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-slate-50 border border-slate-100/50 pointer-events-none">
+      </div>
+
+      <div class="relative flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-10">
+        <div class="grow text-center sm:text-left z-10">
+          <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">Samet Tenekeci</h1>
+          <p class="mt-2 text-base font-medium text-slate-600">Applied AI Scientist ⋅ Machine Learning ⋅ Computational
+            Biology</p>
+          <p class="mt-4 text-sm sm:text-base text-slate-700 leading-relaxed">
             Applied AI researcher and engineer with experience developing NLP and machine learning systems for
             healthcare, biomedical informatics, and software analytics. Delivered multiple AI-driven tools from research
             to usable software products, including biomedical prediction systems, domain-adapted language models, and
             data-driven decision support applications. Experienced in leading interdisciplinary teams, managing AI
             projects, and working with complex real-world datasets in clinical and research environments.
           </p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <a class="inline-flex items-center gap-2 rounded-xl border px-3 py-1.5 text-sm hover:bg-slate-100"
-              href="./CV.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
-            <a class="inline-flex items-center gap-2 rounded-xl border px-3 py-1.5 text-sm hover:bg-slate-100"
-              href="#contact">Contact</a>
+          <div class="mt-6 flex flex-wrap justify-center sm:justify-start gap-3">
+            <a class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 hover:text-slate-900 transition-all"
+              href="./CV.pdf" target="_blank" rel="noopener noreferrer">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+              </svg>
+              Download CV
+            </a>
+            <a class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 hover:text-slate-900 transition-all"
+              href="#contact">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                </path>
+              </svg>
+              Contact
+            </a>
+          </div>
+        </div>
+
+        <div class="shrink-0 mx-auto sm:mx-0 sm:ml-4 z-10">
+          <div class="relative inline-block group">
+            <!-- Subtle glow effect -->
+            <div
+              class="absolute inset-0 rounded-full bg-slate-200/60 blur-xl transform scale-110 group-hover:bg-slate-300/60 transition-colors duration-500">
+            </div>
+            <img src="./samet_profile_pic.jpg" alt="Samet Tenekeci"
+              class="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover border-4 border-white shadow-xl transition-transform duration-500 group-hover:scale-[1.02]" />
           </div>
         </div>
       </div>
