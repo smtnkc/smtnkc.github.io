@@ -1,0 +1,37 @@
+#!/bin/sh
+
+set -eu
+
+PROJECT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+
+if [ -x /opt/homebrew/opt/ruby/bin/ruby ]; then
+  RUBY_BIN=/opt/homebrew/opt/ruby/bin/ruby
+elif [ -x /usr/local/opt/ruby/bin/ruby ]; then
+  RUBY_BIN=/usr/local/opt/ruby/bin/ruby
+else
+  RUBY_BIN=$(command -v ruby)
+fi
+
+if ! "$RUBY_BIN" -e 'exit Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("3.0") ? 0 : 1'; then
+  printf '%s\n' "A current Ruby is required. Install it with: brew install ruby" >&2
+  exit 1
+fi
+
+RUBY_DIR=$(dirname -- "$RUBY_BIN")
+PATH="$RUBY_DIR:$PATH"
+BUNDLE_PATH="$PROJECT_DIR/vendor/bundle"
+export PATH BUNDLE_PATH
+
+if ! command -v bundle >/dev/null 2>&1; then
+  printf '%s\n' "Bundler is missing. Install it with: $RUBY_BIN -S gem install bundler" >&2
+  exit 1
+fi
+
+cd "$PROJECT_DIR"
+
+if ! bundle check >/dev/null 2>&1; then
+  bundle install
+fi
+
+exec bundle exec jekyll serve --livereload "$@"
+
