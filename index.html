@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/controls.css?v=3">
-  <script src="./assets/theme.js?v=2"></script>
+  <link rel="stylesheet" href="./assets/controls.css?v=8">
+  <script src="./assets/theme.js?v=5"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
@@ -139,6 +139,28 @@
       color: #0f172a !important;
     }
 
+    .profile-portrait {
+      position: relative;
+      isolation: isolate;
+      display: inline-block;
+      border-radius: 9999px;
+    }
+
+    .profile-portrait::before {
+      position: absolute;
+      inset: 0.15rem;
+      z-index: -1;
+      border-radius: inherit;
+      box-shadow: 0 0 2rem 0.65rem rgba(100, 116, 139, 0.32);
+      content: "";
+    }
+
+    .profile-portrait img {
+      display: block;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
     @media print {
       .no-print {
         display: none !important
@@ -246,11 +268,7 @@
         </div>
 
         <div class="shrink-0 mx-auto sm:mx-0 sm:ml-4 z-10">
-          <div class="relative inline-block group">
-            <!-- Subtle glow effect -->
-            <div
-              class="absolute inset-0 rounded-full bg-slate-200/60 blur-xl transform scale-110 group-hover:bg-slate-300/60 transition-colors duration-500">
-            </div>
+          <div class="profile-portrait group">
             <img src="./samet_profile_pic.jpg" alt="Samet Tenekeci"
               class="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover border-4 border-white shadow-xl transition-transform duration-500 group-hover:scale-[1.02]" />
           </div>

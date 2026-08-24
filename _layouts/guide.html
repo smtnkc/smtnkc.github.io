@@ -24,9 +24,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ '/assets/controls.css' | relative_url }}?v=3">
+    <link rel="stylesheet" href="{{ '/assets/controls.css' | relative_url }}?v=8">
     <link rel="stylesheet" href="{{ '/assets/guide.css' | relative_url }}?v=4">
-    <script src="{{ '/assets/theme.js' | relative_url }}?v=2"></script>
+    <script src="{{ '/assets/theme.js' | relative_url }}?v=5"></script>
   </head>
   <body>
     <a class="skip-link" href="#guide-content">{{ page.skip_label }}</a>
@@ -48,25 +48,25 @@
             <span class="control-sr-only">{% if page.lang == 'tr' %}Renk temasını değiştir{% else %}Change color theme{% endif %}</span>
           </button>
 
-          <nav class="control-toggle language-toggle" aria-label="{{ page.language_label }}">
+          <a class="control-toggle language-toggle"
             {% if page.lang == 'tr' %}
-              <span class="control-toggle__segment control-toggle__segment--flag" lang="tr" aria-current="page"
-                title="Türkçe"><img class="control-toggle__flag" src="https://hatscripts.github.io/circle-flags/flags/tr.svg" width="20" height="20" alt=""><span class="control-sr-only">Türkçe</span></span>
+              href="{{ '/digital-entrepreneurship-guide/' | relative_url }}" hreflang="en"
+              aria-label="Switch to English" title="Switch to English"
             {% else %}
-              <a class="control-toggle__segment control-toggle__segment--flag"
-                href="{{ '/dijital-girisimcilik-rehberi/' | relative_url }}" hreflang="tr" lang="tr"
-                title="Türkçe"><img class="control-toggle__flag" src="https://hatscripts.github.io/circle-flags/flags/tr.svg" width="20" height="20" alt=""><span class="control-sr-only">Türkçe</span></a>
-            {% endif %}
-
-            {% if page.lang == 'en' %}
-              <span class="control-toggle__segment control-toggle__segment--flag" lang="en" aria-current="page"
-                title="English"><img class="control-toggle__flag" src="https://hatscripts.github.io/circle-flags/flags/gb.svg" width="20" height="20" alt=""><span class="control-sr-only">English</span></span>
-            {% else %}
-              <a class="control-toggle__segment control-toggle__segment--flag"
-                href="{{ '/digital-entrepreneurship-guide/' | relative_url }}" hreflang="en" lang="en"
-                title="English"><img class="control-toggle__flag" src="https://hatscripts.github.io/circle-flags/flags/gb.svg" width="20" height="20" alt=""><span class="control-sr-only">English</span></a>
-            {% endif %}
-          </nav>
+              href="{{ '/dijital-girisimcilik-rehberi/' | relative_url }}" hreflang="tr"
+              aria-label="Türkçeye geç" title="Türkçeye geç"
+            {% endif %}>
+            <span class="control-toggle__segment control-toggle__segment--flag" lang="tr"
+              {% if page.lang == 'tr' %}aria-current="page"{% endif %}>
+              <img class="control-toggle__flag" src="https://hatscripts.github.io/circle-flags/flags/tr.svg" width="20" height="20" alt="">
+              <span class="control-sr-only">Türkçe</span>
+            </span>
+            <span class="control-toggle__segment control-toggle__segment--flag" lang="en"
+              {% if page.lang == 'en' %}aria-current="page"{% endif %}>
+              <img class="control-toggle__flag" src="https://hatscripts.github.io/circle-flags/flags/gb.svg" width="20" height="20" alt="">
+              <span class="control-sr-only">English</span>
+            </span>
+          </a>
         </div>
       </div>
     </header>
@@ -97,38 +97,6 @@
       </div>
     </main>
 
-    <script>
-      (() => {
-        const headings = Array.from(document.querySelectorAll('.guide-content h2'))
-          .filter((heading) => /^(?:[1-9]|10)\.\s/.test(heading.textContent.trim()))
-          .slice(0, 10);
-
-        const slugify = (text) => text
-          .normalize('NFKD')
-          .replace(/[\u0300-\u036f]/g, '')
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, '-')
-          .replace(/^-|-$/g, '');
-
-        headings.forEach((heading) => {
-          if (!heading.id) heading.id = slugify(heading.textContent);
-        });
-
-        document.querySelectorAll('[data-guide-toc]').forEach((list) => {
-          headings.forEach((heading) => {
-            const item = document.createElement('li');
-            const link = document.createElement('a');
-            link.href = `#${heading.id}`;
-            link.textContent = heading.textContent;
-            item.appendChild(link);
-            list.appendChild(item);
-          });
-        });
-
-        document.querySelectorAll('.guide-toc-mobile a').forEach((link) => {
-          link.addEventListener('click', () => link.closest('details').removeAttribute('open'));
-        });
-      })();
-    </script>
+    <script src="{{ '/assets/guide.js' | relative_url }}?v=2"></script>
   </body>
 </html>

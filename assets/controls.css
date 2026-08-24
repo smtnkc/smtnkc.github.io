@@ -24,6 +24,17 @@ button.control-toggle {
   cursor: pointer;
 }
 
+.language-toggle,
+.language-toggle * {
+  cursor: pointer;
+}
+
+.language-toggle {
+  text-decoration: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .control-toggle__segment {
   display: inline-flex;
   align-items: center;
@@ -39,6 +50,12 @@ button.control-toggle {
   font-weight: 600;
   text-decoration: none;
   transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+}
+
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition: none !important;
 }
 
 .control-toggle__segment:hover {

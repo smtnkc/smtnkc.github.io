@@ -2,6 +2,7 @@
   const storageKey = 'smtnkc-theme';
   const root = document.documentElement;
   const media = window.matchMedia('(prefers-color-scheme: dark)');
+  let themeTransitionVersion = 0;
 
   const storedTheme = () => {
     try {
@@ -27,6 +28,20 @@
     });
   };
 
+  const applyThemeWithoutLanguageTransition = (theme) => {
+    const transitionVersion = ++themeTransitionVersion;
+    root.classList.add('theme-switching');
+    applyTheme(theme);
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        if (transitionVersion === themeTransitionVersion) {
+          root.classList.remove('theme-switching');
+        }
+      });
+    });
+  };
+
   applyTheme(currentTheme());
 
   const connectControls = () => {
@@ -40,7 +55,7 @@
         } catch (_) {
           // The selected theme still applies for this page when storage is unavailable.
         }
-        applyTheme(nextTheme);
+        applyThemeWithoutLanguageTransition(nextTheme);
       });
     });
   };
@@ -52,7 +67,7 @@
   }
 
   const handleSystemThemeChange = () => {
-    if (!storedTheme()) applyTheme(currentTheme());
+    if (!storedTheme()) applyThemeWithoutLanguageTransition(currentTheme());
   };
 
   if (typeof media.addEventListener === 'function') {
