@@ -13,11 +13,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/controls.css?v=8">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20,500,0,0"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./assets/controls.css?v=15">
   <script src="./assets/theme.js?v=5"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
+      --page-bg: #f8fafc;
       --fg: #0f172a;
       --muted: #475569;
       --control-bg: #f1f5f9;
@@ -26,13 +29,14 @@
       --control-hover: #0f172a;
       --control-active-bg: #ffffff;
       --control-active-text: #0f172a;
-      --menu-bg: #ffffff;
+      --header-bg: #ffffff;
       --menu-border: #e2e8f0;
       --menu-text: #0f172a;
     }
 
     html.dark,
     html[data-theme="dark"] {
+      --page-bg: #020617;
       --fg: #f8fafc;
       --muted: #cbd5e1;
       --control-bg: #0f172a;
@@ -41,15 +45,75 @@
       --control-hover: #f8fafc;
       --control-active-bg: #334155;
       --control-active-text: #f8fafc;
-      --menu-bg: #0f172a;
+      --header-bg: #0f172a;
       --menu-border: #334155;
       --menu-text: #f8fafc;
     }
 
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 5rem
-        }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 400;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main>section>h2.text-xl {
+      font-size: clamp(1.25rem, 2.6vw, 1.4rem);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+    }
+
+    #about h1 {
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    main .font-medium.text-base,
+    #organizations .font-medium.text-sm,
+    #skills .font-medium {
+      font-weight: 500;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+    }
+
+    #about p.text-sm,
+    #projects article>p.text-sm,
+    #publications>ol,
+    #skills>div,
+    #contact>div {
+      font-size: 0.9rem;
+    }
+
+    #about p.text-sm,
+    #projects article>p.text-sm,
+    #publications>ol {
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    #education .text-sm.text-slate-600,
+    #experience .text-sm.text-slate-600,
+    #projects article>p.text-xs,
+    #skills ul,
+    #contact>div {
+      font-weight: 300;
+    }
+
+    #projects article>p.text-xs {
+      line-height: 1.5;
+    }
+
+    #skills ul,
+    #contact>div {
+      line-height: 1.6;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem
+    }
 
     html.dark body,
     html.dark .bg-slate-50 {
@@ -58,8 +122,8 @@
     }
 
     html.dark header {
-      border-color: #1e293b !important;
-      background-color: rgba(2, 6, 23, 0.9) !important;
+      border-color: #334155 !important;
+      background-color: #0f172a !important;
     }
 
     html.dark .bg-white {
@@ -168,6 +232,46 @@
       backface-visibility: hidden;
     }
 
+    .home-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid var(--action-border);
+      border-radius: 0.75rem;
+      background: var(--action-bg);
+      box-shadow: var(--action-shadow);
+      color: var(--action-text);
+      font-size: 0.875rem;
+      font-weight: 400;
+      line-height: 1;
+      text-decoration: none;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, transform 150ms ease;
+    }
+
+    @media (hover: hover) {
+      .home-action:hover {
+        border-color: var(--action-hover-border);
+        background: var(--action-hover-bg);
+        color: var(--action-hover-text);
+      }
+    }
+
+    .home-action:active {
+      border-color: var(--action-hover-border);
+      background: var(--action-hover-bg);
+      color: var(--action-hover-text);
+      transform: translateY(1px);
+    }
+
+    .home-action:focus-visible {
+      outline: 3px solid rgba(37, 99, 235, 0.25);
+      outline-offset: 3px;
+    }
+
     .home-menu {
       position: relative;
       display: none;
@@ -187,6 +291,8 @@
       color: var(--control-text);
       cursor: pointer;
       list-style: none;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .home-menu__toggle::-webkit-details-marker {
@@ -227,43 +333,65 @@
     .home-menu__panel {
       position: absolute;
       top: calc(100% + 0.75rem);
-      right: 0;
-      width: min(20rem, calc(100vw - 1.25rem));
+      right: -1.25rem;
+      width: 100vw;
       max-height: calc(100vh - 5rem);
       overflow-y: auto;
-      padding: 1rem;
-      border: 1px solid var(--menu-border);
-      border-radius: 1rem;
-      background: var(--menu-bg);
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.16);
-    }
-
-    .home-menu__title {
-      margin: 0 0 0.75rem;
-      color: var(--menu-text);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      padding: 0.35rem 0;
+      border: 0;
+      border-top: 1px solid var(--menu-border);
+      border-bottom: 1px solid var(--menu-border);
+      background: var(--page-bg);
     }
 
     .home-menu__panel a {
+      position: relative;
       display: block;
-      padding-left: 0.75rem;
-      border-left: 2px solid var(--menu-border);
+      width: 100%;
+      padding: 0.7rem 2.75rem 0.7rem 1.25rem;
       color: var(--muted);
-      font-size: 0.82rem;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: normal;
       line-height: 1.45;
+      text-align: right;
       text-decoration: none;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .home-menu__item-icon {
+      position: absolute;
+      top: 50%;
+      right: 1.25rem;
+      color: var(--muted);
+      font-family: "Material Symbols Rounded";
+      font-size: 1.1rem;
+      font-style: normal;
+      font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 20;
+      font-weight: normal;
+      letter-spacing: normal;
+      line-height: 1;
+      text-transform: none;
+      white-space: nowrap;
+      word-wrap: normal;
+      transform: translateY(-50%);
+      -webkit-font-feature-settings: "liga";
+      font-feature-settings: "liga";
+      -webkit-font-smoothing: antialiased;
     }
 
     .home-menu__panel a+a {
-      margin-top: 0.5rem;
+      margin-top: 0.25rem;
     }
 
     .home-menu__panel a:hover {
-      border-left-color: var(--control-text);
-      color: var(--menu-text);
+      color: var(--fg);
+    }
+
+    .home-menu__panel a:hover .home-menu__item-icon {
+      color: var(--fg);
     }
 
     @media (max-width: 639px) {
@@ -319,8 +447,8 @@
 
 <body class="bg-slate-50 text-slate-900">
   <!-- Header -->
-  <header class="sticky top-0 z-40 backdrop-blur bg-white/70 border-b border-slate-200 no-print">
-    <div class="mx-auto max-w-4xl px-4 py-3 flex items-center gap-4">
+  <header class="sticky top-0 z-40 bg-white border-b border-slate-200 no-print">
+    <div class="mx-auto max-w-4xl px-5 py-3 flex items-center gap-4">
       <nav class="hidden sm:flex flex-1 justify-center gap-6 text-sm text-slate-700">
         <a href="#about" class="hover:text-slate-900">About</a>
         <a href="#education" class="hover:text-slate-900">Education</a>
@@ -343,22 +471,22 @@
             <span class="home-menu__icon" aria-hidden="true"><span></span><span></span><span></span></span>
           </summary>
           <nav class="home-menu__panel" aria-label="Page navigation">
-            <p class="home-menu__title">Navigation</p>
-            <a href="#about">About</a>
-            <a href="#education">Education</a>
-            <a href="#experience">Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#publications">Publications</a>
-            <a href="#skills">Skills</a>
-            <a href="#organizations">Organizations</a>
-            <a href="#contact">Contact</a>
+            <a href="#about">About<span class="home-menu__item-icon" aria-hidden="true">person</span></a>
+            <a href="#education">Education<span class="home-menu__item-icon" aria-hidden="true">school</span></a>
+            <a href="#experience">Experience<span class="home-menu__item-icon" aria-hidden="true">work</span></a>
+            <a href="#projects">Projects<span class="home-menu__item-icon" aria-hidden="true">account_tree</span></a>
+            <a href="#publications">Publications<span class="home-menu__item-icon" aria-hidden="true">article</span></a>
+            <a href="#skills">Skills<span class="home-menu__item-icon" aria-hidden="true">psychology</span></a>
+            <a href="#organizations">Organizations<span class="home-menu__item-icon"
+                aria-hidden="true">groups</span></a>
+            <a href="#contact">Contact<span class="home-menu__item-icon" aria-hidden="true">mail</span></a>
           </nav>
         </details>
       </div>
     </div>
   </header>
 
-  <main class="mx-auto max-w-4xl px-4 py-8">
+  <main class="mx-auto max-w-4xl px-5 py-5">
     <section id="about"
       class="page bg-white rounded-3xl shadow-sm border border-slate-200 p-8 sm:p-10 relative overflow-hidden">
 
@@ -375,16 +503,14 @@
             projects, and working with complex real-world datasets in clinical and research environments.
           </p>
           <div class="mt-6 flex flex-wrap justify-center sm:justify-start gap-3">
-            <a class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm text-slate-700 shadow-sm hover:bg-slate-50 hover:text-slate-900 transition-all"
-              href="./CV.pdf" target="_blank" rel="noopener noreferrer">
+            <a class="home-action" href="./CV.pdf" target="_blank" rel="noopener noreferrer">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
               </svg>
               Download CV
             </a>
-            <a class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm text-slate-700 shadow-sm hover:bg-slate-50 hover:text-slate-900 transition-all"
-              href="#contact">
+            <a class="home-action" href="#contact">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
@@ -405,7 +531,7 @@
     </section>
 
     <!-- Education -->
-    <section id="education" class="mt-6 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+    <section id="education" class="mt-5 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
       <h2 class="text-xl font-semibold">Education</h2>
       <ul class="mt-4 space-y-4">
         <!-- PhD -->
@@ -523,7 +649,7 @@
 
 
     <!-- Experience -->
-    <section id="experience" class="mt-6 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+    <section id="experience" class="mt-5 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
       <h2 class="text-xl font-semibold">Experience</h2>
       <ul class="mt-4 space-y-4">
 
@@ -706,7 +832,7 @@
 
 
     <!-- Projects -->
-    <section id="projects" class="mt-6 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+    <section id="projects" class="mt-5 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
       <h2 class="text-xl font-semibold">Selected Projects</h2>
       <div class="mt-4 grid sm:grid-cols-2 gap-4">
 
@@ -969,7 +1095,7 @@
 
 
     <!-- Publications -->
-    <section id="publications" class="mt-6 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+    <section id="publications" class="mt-5 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
       <h2 class="text-xl font-semibold">Selected Publications</h2>
       <ol class="mt-4 space-y-3 text-sm text-slate-800 list-decimal list-inside">
         <li>
@@ -1064,7 +1190,7 @@
 
 
     <!-- Skills -->
-    <section id="skills" class="mt-6 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+    <section id="skills" class="mt-5 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
       <h2 class="text-xl font-semibold">Skills</h2>
 
       <div class="mt-3 text-sm">
@@ -1119,7 +1245,7 @@
 
 
     <!-- Organizations -->
-    <section id="organizations" class="mt-6 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+    <section id="organizations" class="mt-5 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
       <h2 class="text-xl font-semibold">Organizations</h2>
       <ul class="mt-4 space-y-4">
         <li class="flex items-start justify-between gap-8">
@@ -1165,7 +1291,7 @@
 
 
     <!-- Contact -->
-    <section id="contact" class="mt-6 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
+    <section id="contact" class="mt-5 bg-white rounded-3xl shadow-sm border border-slate-200 p-6">
       <h2 class="text-xl font-semibold">Contact</h2>
       <div class="mt-2 text-sm text-slate-800">
         <p><span class="font-medium">Email:</span> <a id="email-link" class="text-blue-600 hover:underline"></a></p>
@@ -1182,7 +1308,7 @@
       </div>
     </section>
 
-    <footer class="mt-6 pb-12 text-center text-xs text-slate-500">
+    <footer class="site-footer">
       © <span id="y"></span> Samet Tenekeci · Hosted on GitHub Pages
     </footer>
   </main>

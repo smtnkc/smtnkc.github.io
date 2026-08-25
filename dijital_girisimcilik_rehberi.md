@@ -61,7 +61,7 @@ Bir aşamadan sonraki aşamaya geçen kullanıcı oranıdır.
 
 Örnek:
 
-1.000 ziyaretçi → 100 kayıt = %10 conversion rate
+> 1.000 ziyaretçi → 100 kayıt = %10 conversion rate
 
 ### ROAS — Return on Ad Spend
 Reklama harcanan para karşılığında ne kadar gelir elde edildiğini gösterir.
@@ -95,7 +95,7 @@ Kullanıcının ürün içindeki aşamalarını gösteren akıştır.
 
 Örnek:
 
-Reklam → App Store → Install → Kayıt → Ürün görüntüleme → Satın alma
+> Reklam → App Store → Install → Kayıt → Ürün görüntüleme → Satın alma
 
 ### Onboarding
 Yeni kullanıcının ürünü anlamasını ve ilk değerli işlemi yapmasını kolaylaştıran başlangıç sürecidir.
@@ -198,9 +198,7 @@ Kullanıcının 30. gün geri dönme oranıdır.
 
 Örnek:
 
-1.000 yeni kullanıcıdan 7 gün sonra 150'si tekrar kullanıyorsa:
-
-D7 retention = %15
+> 1.000 yeni kullanıcıdan 7 gün sonra 150'si tekrar kullanıyorsa → D7 retention = %15
 
 ### Retention Curve
 Kullanıcıların zaman içinde ne kadarının aktif kaldığını gösteren grafiktir.
@@ -574,7 +572,7 @@ Güzel görünen ancak işin gerçek sağlığını tam olarak göstermeyen metr
 
 Örnek:
 
-Toplam download sayısı yüksek olabilir ancak D30 retention çok düşük olabilir.
+> Toplam download sayısı yüksek olabilir ancak D30 retention çok düşük olabilir.
 
 ### Event
 Analytics sisteminde kaydedilen kullanıcı hareketidir.
@@ -592,7 +590,7 @@ Bir özelliğin belirli kullanıcı gruplarına açılıp kapatılmasını sağl
 
 Örnek:
 
-Yeni checkout ekranı önce kullanıcıların %10'una açılır.
+> Yeni checkout ekranı önce kullanıcıların %10'una açılır.
 
 ### Analytics
 Kullanıcıların üründe ne yaptığını ölçme ve analiz etme sürecidir.
@@ -653,23 +651,21 @@ Rakip uygulamaların:
 gibi verilerini incelemek için kullanılır.
 
 
-# Minimal Dijital Ürün Tool Stack
+## 11. Minimal Tool Stack
 
 Erken aşamada onlarca araç kullanmak yerine aşağıdaki set çoğu mobil ürün için yeterlidir.
 
 | İhtiyaç | Araç |
 |---|---|
-| Product analytics | **Mixpanel veya PostHog** |
+| Product analytics | **Mixpanel / PostHog** |
 | Mobile subscription | **RevenueCat** |
 | Paywall optimization | **Superwall** |
 | Acquisition attribution | **AppsFlyer** |
 | Push notification | **OneSignal** |
 | Backend | **Supabase** |
 | Web payments | **Stripe** |
-| App market / competitor research | **Sensor Tower** |
+| App market research | **Sensor Tower** |
 | Mobile development | **Expo** |
-
-## Araçları Tek Cümlede Hatırlama
 
 **Mixpanel / PostHog**  
 Kullanıcı uygulamada ne yapıyor?
@@ -699,7 +695,7 @@ Mobil pazarda ve rakiplerde neler oluyor?
 iOS ve Android uygulamamı nasıl geliştirip yayınlıyorum?
 
 
-# AARRR: Rehberin Ana Mental Modeli
+## 12. AARRR Mental Modeli
 
 Dijital ürün tarafındaki birçok kavram şu beş aşamada düşünülebilir:
 

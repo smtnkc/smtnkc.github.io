@@ -25,8 +25,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ '/assets/controls.css' | relative_url }}?v=8">
-    <link rel="stylesheet" href="{{ '/assets/guide.css' | relative_url }}?v=10">
+  <link rel="stylesheet" href="{{ '/assets/controls.css' | relative_url }}?v=15">
+  <link rel="stylesheet" href="{{ '/assets/guide.css' | relative_url }}?v=39">
   <script src="{{ '/assets/theme.js' | relative_url }}?v=5"></script>
 </head>
 
@@ -71,7 +71,6 @@
             <span class="guide-menu__icon" aria-hidden="true"><span></span><span></span><span></span></span>
           </summary>
           <nav class="guide-menu__panel" aria-label="{{ page.toc_label }}">
-            <p class="guide-menu__title">{{ page.toc_label }}</p>
             <ol data-guide-toc></ol>
           </nav>
         </details>
@@ -92,13 +91,13 @@
         {{ content }}
       </article>
 
-      <!--<footer class="guide-footer">
-          <a href="{{ '/' | relative_url }}">&larr; {{ page.footer_label }}</a>
-        </footer>-->
+      <footer class="site-footer">
+        © {{ site.time | date: "%Y" }} Samet Tenekeci · Hosted on GitHub Pages
+      </footer>
     </div>
   </main>
 
-  <script src="{{ '/assets/guide.js' | relative_url }}?v=3"></script>
+  <script src="{{ '/assets/guide.js' | relative_url }}?v=12"></script>
 </body>
 
 </html>

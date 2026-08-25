@@ -13,25 +13,148 @@
     .replace(/^-|-$/g, '');
 
   const buildTableOfContents = () => {
-    const headings = Array.from(document.querySelectorAll('.guide-content h2'))
-      .filter((heading) => /^(?:[1-9]|10)\.\s/.test(heading.textContent.trim()))
-      .slice(0, 10);
+    const headings = Array.from(document.querySelectorAll('.guide-content h2'));
 
     headings.forEach((heading) => {
       if (!heading.id) heading.id = slugify(heading.textContent);
     });
 
     document.querySelectorAll('[data-guide-toc]').forEach((list) => {
+      const isHamburgerMenu = Boolean(list.closest('.guide-menu__panel'));
       list.replaceChildren();
-      headings.forEach((heading) => {
+      headings.forEach((heading, index) => {
+        const headingText = heading.textContent.trim();
+        const numberedHeading = headingText.match(/^(\d+)\.\s*(.+)$/);
         const item = document.createElement('li');
         const link = document.createElement('a');
         link.href = `#${heading.id}`;
-        link.textContent = heading.textContent;
+        link.textContent = isHamburgerMenu && numberedHeading ? numberedHeading[2] : headingText;
+        if (isHamburgerMenu) link.dataset.sectionNumber = numberedHeading?.[1] || String(index + 1);
         item.appendChild(link);
         list.appendChild(item);
       });
     });
+  };
+
+  const groupGuideSections = () => {
+    const content = document.querySelector('.guide-content');
+    if (!content) return;
+
+    if (!Array.from(content.children).some((child) => child.classList.contains('guide-section'))) {
+      let currentSection = null;
+      Array.from(content.childNodes).forEach((node) => {
+        const startsSection = node instanceof Element && node.matches('h2');
+
+        if (!currentSection || startsSection) {
+          currentSection = document.createElement('section');
+          currentSection.className = 'guide-section';
+          content.insertBefore(currentSection, node);
+        }
+
+        currentSection.appendChild(node);
+      });
+    }
+
+    const introSection = content.querySelector('.guide-section');
+    const introHeading = introSection && Array.from(introSection.children).find((child) => child.matches('h1'));
+    let introHeader = introSection?.querySelector('.guide-intro__header');
+
+    if (introSection && introHeading && !introHeader) {
+      introHeader = document.createElement('div');
+      introHeader.className = 'guide-intro__header';
+      introSection.insertBefore(introHeader, introHeading);
+      introHeader.appendChild(introHeading);
+    }
+
+    if (introSection && !introSection.querySelector('[data-guide-share]')) {
+      const isTurkish = document.documentElement.lang.toLowerCase().startsWith('tr');
+      const button = document.createElement('button');
+      const icon = document.createElement('span');
+      const label = document.createElement('span');
+      button.className = 'guide-share';
+      button.type = 'button';
+      button.dataset.guideShare = '';
+      button.dataset.defaultLabel = isTurkish ? 'Paylaş' : 'Share';
+      button.dataset.copiedLabel = isTurkish ? 'Bağlantı kopyalandı' : 'Link copied';
+      icon.className = 'guide-share__icon';
+      icon.setAttribute('aria-hidden', 'true');
+      icon.innerHTML = '<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path> </svg>';
+      label.dataset.guideShareLabel = '';
+      label.textContent = button.dataset.defaultLabel;
+      button.append(icon, label);
+      (introHeader || introSection).appendChild(button);
+    }
+  };
+
+  const wrapGuideTables = () => {
+    const isTurkish = document.documentElement.lang.toLowerCase().startsWith('tr');
+
+    document.querySelectorAll('.guide-content table').forEach((table) => {
+      if (table.parentElement?.classList.contains('guide-table-scroll')) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'guide-table-scroll';
+      wrapper.tabIndex = 0;
+      wrapper.setAttribute('role', 'region');
+      wrapper.setAttribute('aria-label', isTurkish ? 'Kaydırılabilir tablo' : 'Scrollable table');
+      table.before(wrapper);
+      wrapper.appendChild(table);
+    });
+  };
+
+  const prepareGuideContent = () => {
+    buildTableOfContents();
+    groupGuideSections();
+    wrapGuideTables();
+  };
+
+  const closeGuideMenu = () => {
+    document.querySelector('.guide-menu[open]')?.removeAttribute('open');
+  };
+
+  const copyText = async (value) => {
+    if (navigator.clipboard?.writeText && window.isSecureContext) {
+      await navigator.clipboard.writeText(value);
+      return;
+    }
+
+    const textarea = document.createElement('textarea');
+    textarea.value = value;
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    const copied = document.execCommand('copy');
+    textarea.remove();
+    if (!copied) throw new Error('Copy failed');
+  };
+
+  const shareGuide = async (button) => {
+    const canonicalUrl = document.querySelector('link[rel="canonical"]')?.href;
+    const url = canonicalUrl || `${window.location.origin}${window.location.pathname}`;
+    const title = document.querySelector('.guide-content h1')?.textContent.trim() || document.title;
+    const text = document.querySelector('meta[name="description"]')?.content || '';
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, text, url });
+        return;
+      } catch (error) {
+        if (error?.name === 'AbortError') return;
+      }
+    }
+
+    try {
+      await copyText(url);
+      const label = button.querySelector('[data-guide-share-label]');
+      if (label) label.textContent = button.dataset.copiedLabel;
+      window.setTimeout(() => {
+        if (button.isConnected && label) label.textContent = button.dataset.defaultLabel;
+      }, 1600);
+    } catch (_) {
+      window.prompt(button.dataset.defaultLabel, url);
+    }
   };
 
   const scrollToSection = (hash, behavior = 'smooth') => {
@@ -47,7 +170,8 @@
     const section = document.getElementById(sectionId);
     if (!section) return false;
 
-    section.scrollIntoView({ behavior, block: 'start' });
+    const scrollTarget = section.closest('.guide-section') || section;
+    scrollTarget.scrollIntoView({ behavior, block: 'start' });
     return true;
   };
 
@@ -129,7 +253,7 @@
     document.querySelector('.guide-sidebar')?.replaceWith(document.importNode(nextSidebar, true));
     document.querySelector('.guide-main')?.replaceWith(document.importNode(nextMain, true));
 
-    buildTableOfContents();
+    prepareGuideContent();
     if (addHistory) window.history.pushState({}, '', url);
     renderedPath = destination.pathname;
 
@@ -165,10 +289,25 @@
     }
   };
 
+  document.addEventListener('pointerdown', (event) => {
+    const activeShareButton = document.activeElement;
+    const target = event.target instanceof Element ? event.target : null;
+    if (activeShareButton instanceof HTMLElement && activeShareButton.matches('[data-guide-share]') && !target?.closest('[data-guide-share]')) {
+      activeShareButton.blur();
+    }
+  }, { passive: true });
+
   document.addEventListener('click', (event) => {
     const target = event.target instanceof Element ? event.target : null;
     const openMenu = document.querySelector('.guide-menu[open]');
     if (openMenu && !target?.closest('.guide-menu')) openMenu.removeAttribute('open');
+
+    const shareButton = target?.closest('[data-guide-share]');
+    if (shareButton) {
+      event.preventDefault();
+      shareGuide(shareButton);
+      return;
+    }
 
     const languageToggle = target?.closest('.language-toggle');
 
@@ -185,12 +324,12 @@
 
     const tocLink = target?.closest('[data-guide-toc] a');
     if (tocLink) {
+      closeGuideMenu();
       const url = new URL(tocLink.href, window.location.href);
       if (url.origin === window.location.origin && url.pathname === window.location.pathname && url.hash) {
         event.preventDefault();
         if (window.location.hash !== url.hash) window.history.pushState({}, '', url.hash);
         scrollToSection(url.hash);
-        tocLink.closest('details')?.removeAttribute('open');
       }
     }
   });
@@ -207,5 +346,8 @@
     }
   });
 
-  buildTableOfContents();
+  prepareGuideContent();
+  if (window.location.hash) {
+    window.requestAnimationFrame(() => scrollToSection(window.location.hash, 'auto'));
+  }
 })();

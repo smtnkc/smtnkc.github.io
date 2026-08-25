@@ -70,7 +70,7 @@ The percentage of users who move from one stage to the next.
 
 Example:
 
-1,000 visitors → 100 sign-ups = 10% conversion rate
+> 1,000 visitors → 100 sign-ups = 10% conversion rate
 
 ### ROAS — Return on Ad Spend
 Measures how much revenue is generated for every unit of money spent on advertising.
@@ -104,7 +104,7 @@ The sequence of steps users move through inside a product.
 
 Example:
 
-Ad → App Store → Install → Sign-up → Product View → Purchase
+> Ad → App Store → Install → Sign-up → Product View → Purchase
 
 ### Onboarding
 The process that helps a new user understand the product and reach the first valuable action.
@@ -205,9 +205,7 @@ The percentage of users who return on day 30.
 
 Example:
 
-If 150 out of 1,000 new users return after 7 days:
-
-D7 retention = 15%
+> If 150 out of 1,000 new users return after 7 days → D7 retention = 15%
 
 ### Retention Curve
 A chart showing how many users remain active over time.
@@ -585,7 +583,7 @@ A metric that looks impressive but may not reflect the true health of the busine
 
 Example:
 
-A product may have a high total download count but very low D30 retention.
+> A product may have a high total download count but very low D30 retention.
 
 ### Event
 A user action recorded by an analytics system.
@@ -603,7 +601,7 @@ A mechanism used to enable or disable a feature for specific user groups.
 
 Example:
 
-A new checkout screen is first shown to 10% of users.
+> A new checkout screen is first shown to 10% of users.
 
 ### Analytics
 The process of measuring and analyzing what users do inside the product.
@@ -660,7 +658,7 @@ It is commonly used to analyze:
 - Market performance
 
 
-# Minimal Digital Product Tool Stack
+## 11. Minimal Tool Stack
 
 Instead of using dozens of tools, the following set is enough for many early-stage mobile products.
 
@@ -673,10 +671,8 @@ Instead of using dozens of tools, the following set is enough for many early-sta
 | Push notifications | **OneSignal** |
 | Backend | **Supabase** |
 | Web payments | **Stripe** |
-| App market / competitor research | **Sensor Tower** |
+| App market research | **Sensor Tower** |
 | Mobile development | **Expo** |
-
-## Remember Each Tool in One Sentence
 
 **Mixpanel / PostHog**  
 What are users doing inside the product?
@@ -706,7 +702,7 @@ What is happening in the mobile app market and among competitors?
 How do I build and ship my iOS and Android app?
 
 
-# AARRR: The Main Mental Model
+## 12. AARRR: The Main Mental Model
 
 Many concepts in digital products can be organized around five stages:
 
