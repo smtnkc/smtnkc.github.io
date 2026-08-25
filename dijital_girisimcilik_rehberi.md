@@ -88,7 +88,7 @@ Temel sorusu:
 Meta Ads, Google Ads, TikTok, influencer kampanyası veya başka bir acquisition kanalından gelen kullanıcıları ve kampanya performansını takip etmek için kullanılır.
 
 
-## 2. Funnel, Onboarding ve Kullanıcı Davranışı
+## 2. Kullanıcı Davranışı
 
 ### Funnel
 Kullanıcının ürün içindeki aşamalarını gösteren akıştır.
@@ -245,14 +245,14 @@ ARR ≈ MRR × 12
 ### ARPU — Average Revenue Per User
 Kullanıcı başına ortalama gelirdir.
 
-### ARPPU
+### ARPPU — Average Revenue Per Paying User
 Ödeme yapan kullanıcı başına ortalama gelirdir.
 
-### LTV / CLV — Lifetime Value
-Bir müşterinin ürünle kaldığı süre boyunca oluşturması beklenen toplam ekonomik değerdir.
+### LTV — Lifetime Value
+Bir müşterinin ürünle kaldığı süre boyunca oluşturması beklenen toplam ekonomik değerdir. Customer Lifetime Value (CLV) olarak da adlandırılır.
 
-### LTV:CAC
-Bir müşteriden elde edilen değer ile o müşteriyi kazanmanın maliyetini karşılaştırır.
+### LTV:CAC — Lifetime Value to Customer Acquisition Cost Ratio
+Müşterinin yaşam boyu değeri ile o müşteriyi kazanmak için katlanılan müşteri edinme maliyetini karşılaştırır.
 
 ### Expansion Revenue
 Mevcut müşterilerin daha pahalı plana geçmesi veya ek özellik satın almasıyla oluşan ek gelirdir.
@@ -355,7 +355,7 @@ Talep yoksa supply gelmez.
 Supply yoksa demand gelmez.
 
 
-## 6. Monetization ve Pricing
+## 6. Fiyatlandırma ve Para Kazanma
 
 ### Monetization
 Ürünün nasıl gelir üreteceğini ifade eder.
@@ -416,8 +416,11 @@ Basit ayrım:
 
 ## 7. Startup ve Ürün Geliştirme
 
+### PoC — Proof of Concept
+Bir fikrin, teknolojinin veya kritik teknik varsayımın uygulanabilir olup olmadığını görmek için yapılan küçük ve odaklı testtir.
+
 ### MVP — Minimum Viable Product
-Fikri gerçek kullanıcılarla test etmek için gereken en küçük çalışan ürün sürümüdür.
+Fikri gerçek kullanıcılarla test etmek için gereken en küçük çalışan ürün sürümüdür. PoC yapılabilirliği doğrularken MVP, ürünün pazardaki değerini test eder.
 
 ### PMF — Product-Market Fit
 Ürünün gerçek bir ihtiyaca karşılık geldiği ve kullanıcıların ürünü kullanmaya devam ettiği noktadır.
@@ -489,7 +492,7 @@ Temel kullanım alanları:
 Mobil startup tarafında hızlı geliştirme için sık kullanılan seçeneklerden biridir.
 
 
-## 8. Go-to-Market ve Şirket Büyütme
+## 8. Şirket Büyütme
 
 ### GTM — Go-to-Market
 Ürünün pazara nasıl çıkarılacağını ve ilk müşterilerin nasıl kazanılacağını anlatan plandır.
@@ -500,13 +503,13 @@ Mobil startup tarafında hızlı geliştirme için sık kullanılan seçeneklerd
 ### Persona
 Belirli bir kullanıcı tipinin temsili profilidir.
 
-### B2C
+### B2C — Business to Consumer
 Şirketin doğrudan bireysel tüketiciye satış yaptığı modeldir.
 
-### B2B
+### B2B — Business to Business
 Şirketin başka şirketlere satış yaptığı modeldir.
 
-### B2B2C
+### B2B2C — Business to Business to Consumer
 Bir şirket üzerinden son kullanıcıya ulaşılan modeldir.
 
 ### PLG — Product-Led Growth
@@ -544,7 +547,7 @@ Potansiyel müşteri bulma sürecidir.
 Müşterinin içerik, Google, sosyal medya veya başka kanallar üzerinden şirkete kendisinin ulaşmasıdır.
 
 
-## 9. Deney ve Product Analytics
+## 9. Ürün Analitiği
 
 ### A/B Test
 İki farklı ürün veya tasarım varyasyonunun kullanıcı gruplarında karşılaştırılmasıdır.
@@ -710,6 +713,6 @@ Buna **AARRR Funnel** veya **Pirate Metrics** denir.
 
 Bu yapının üzerine şu metrikleri oturtmak yeterlidir:
 
-`CPI / CAC → Conversion → D1 / D7 / D30 Retention → DAU / MAU → Churn → ARPU → LTV → MRR / ARR`
+`CPI / CAC → Conversion → D1 / D7 / D30 Retention → DAU / MAU → Churn → ARPU / ARPPU → LTV → MRR / ARR`
 
 Bu kavramları ve minimal tool stack'i anlamak, mobil uygulama, SaaS ve marketplace tarafındaki günlük startup konuşmalarının büyük bölümünü takip etmek için yeterli bir temel sağlar.

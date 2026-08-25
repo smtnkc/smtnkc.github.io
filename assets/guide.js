@@ -79,10 +79,6 @@
   };
 
   const updateHeader = (nextDocument) => {
-    const currentHome = document.querySelector('.home-link');
-    const nextHome = nextDocument.querySelector('.home-link');
-    if (currentHome && nextHome) copyAttribute(currentHome, nextHome, 'aria-label');
-
     const currentTheme = document.querySelector('[data-theme-toggle]');
     const nextTheme = nextDocument.querySelector('[data-theme-toggle]');
     if (currentTheme && nextTheme) {
@@ -110,6 +106,12 @@
         if (nextSegment?.hasAttribute('aria-current')) segment.setAttribute('aria-current', 'page');
         else segment.removeAttribute('aria-current');
       });
+    }
+
+    const currentMenu = document.querySelector('.guide-menu');
+    const nextMenu = nextDocument.querySelector('.guide-menu');
+    if (currentMenu && nextMenu) {
+      currentMenu.replaceWith(document.importNode(nextMenu, true));
     }
   };
 
@@ -165,6 +167,9 @@
 
   document.addEventListener('click', (event) => {
     const target = event.target instanceof Element ? event.target : null;
+    const openMenu = document.querySelector('.guide-menu[open]');
+    if (openMenu && !target?.closest('.guide-menu')) openMenu.removeAttribute('open');
+
     const languageToggle = target?.closest('.language-toggle');
 
     if (languageToggle) {
@@ -185,7 +190,7 @@
         event.preventDefault();
         if (window.location.hash !== url.hash) window.history.pushState({}, '', url.hash);
         scrollToSection(url.hash);
-        tocLink.closest('.guide-toc-mobile')?.removeAttribute('open');
+        tocLink.closest('details')?.removeAttribute('open');
       }
     }
   });

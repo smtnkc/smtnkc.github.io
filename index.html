@@ -26,6 +26,9 @@
       --control-hover: #0f172a;
       --control-active-bg: #ffffff;
       --control-active-text: #0f172a;
+      --menu-bg: #ffffff;
+      --menu-border: #e2e8f0;
+      --menu-text: #0f172a;
     }
 
     html.dark,
@@ -38,11 +41,15 @@
       --control-hover: #f8fafc;
       --control-active-bg: #334155;
       --control-active-text: #f8fafc;
+      --menu-bg: #0f172a;
+      --menu-border: #334155;
+      --menu-text: #f8fafc;
     }
 
-    html {
-      scroll-behavior: smooth
-    }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 5rem
+        }
 
     html.dark body,
     html.dark .bg-slate-50 {
@@ -161,6 +168,110 @@
       backface-visibility: hidden;
     }
 
+    .home-menu {
+      position: relative;
+      display: none;
+      height: 2.25rem;
+    }
+
+    .home-menu__toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border: 1px solid var(--control-border);
+      border-radius: 999px;
+      background: var(--control-bg);
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+      color: var(--control-text);
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .home-menu__toggle::-webkit-details-marker {
+      display: none;
+    }
+
+    .home-menu__toggle:focus-visible {
+      outline: 3px solid rgba(59, 130, 246, 0.3);
+      outline-offset: 2px;
+    }
+
+    .home-menu__icon {
+      display: grid;
+      width: 1rem;
+      gap: 3px;
+    }
+
+    .home-menu__icon>span {
+      width: 100%;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      transition: opacity 150ms ease, transform 150ms ease;
+    }
+
+    .home-menu[open] .home-menu__icon>span:first-child {
+      transform: translateY(5px) rotate(45deg);
+    }
+
+    .home-menu[open] .home-menu__icon>span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .home-menu[open] .home-menu__icon>span:last-child {
+      transform: translateY(-5px) rotate(-45deg);
+    }
+
+    .home-menu__panel {
+      position: absolute;
+      top: calc(100% + 0.75rem);
+      right: 0;
+      width: min(20rem, calc(100vw - 1.25rem));
+      max-height: calc(100vh - 5rem);
+      overflow-y: auto;
+      padding: 1rem;
+      border: 1px solid var(--menu-border);
+      border-radius: 1rem;
+      background: var(--menu-bg);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.16);
+    }
+
+    .home-menu__title {
+      margin: 0 0 0.75rem;
+      color: var(--menu-text);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .home-menu__panel a {
+      display: block;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--menu-border);
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.45;
+      text-decoration: none;
+    }
+
+    .home-menu__panel a+a {
+      margin-top: 0.5rem;
+    }
+
+    .home-menu__panel a:hover {
+      border-left-color: var(--control-text);
+      color: var(--menu-text);
+    }
+
+    @media (max-width: 639px) {
+      .home-menu {
+        display: block;
+      }
+    }
+
     @media print {
       .no-print {
         display: none !important
@@ -226,6 +337,23 @@
           <span class="control-toggle__segment theme-toggle__dark" aria-hidden="true">☾</span>
           <span class="control-sr-only">Change color theme</span>
         </button>
+
+        <details class="home-menu">
+          <summary class="home-menu__toggle" aria-label="Open navigation menu" title="Navigation menu">
+            <span class="home-menu__icon" aria-hidden="true"><span></span><span></span><span></span></span>
+          </summary>
+          <nav class="home-menu__panel" aria-label="Page navigation">
+            <p class="home-menu__title">Navigation</p>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#publications">Publications</a>
+            <a href="#skills">Skills</a>
+            <a href="#organizations">Organizations</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </details>
       </div>
     </div>
   </header>
@@ -237,7 +365,7 @@
       <div class="relative flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-5">
         <div class="grow text-center sm:text-left z-10">
           <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">Samet Tenekeci</h1>
-          <p class="mt-2 text-base font-medium text-slate-600">Applied AI Scientist ⋅ Machine Learning ⋅ Computational
+          <p class="mt-2 text-base font-light text-slate-600">Applied AI Scientist ⋅ Machine Learning ⋅ Computational
             Biology</p>
           <p class="mt-4 text-sm text-slate-700 leading-relaxed">
             Applied AI researcher and engineer with experience developing NLP and machine learning systems for
@@ -247,7 +375,7 @@
             projects, and working with complex real-world datasets in clinical and research environments.
           </p>
           <div class="mt-6 flex flex-wrap justify-center sm:justify-start gap-3">
-            <a class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 hover:text-slate-900 transition-all"
+            <a class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm text-slate-700 shadow-sm hover:bg-slate-50 hover:text-slate-900 transition-all"
               href="./CV.pdf" target="_blank" rel="noopener noreferrer">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -255,7 +383,7 @@
               </svg>
               Download CV
             </a>
-            <a class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 hover:text-slate-900 transition-all"
+            <a class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm text-slate-700 shadow-sm hover:bg-slate-50 hover:text-slate-900 transition-all"
               href="#contact">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1055,11 +1183,11 @@
     </section>
 
     <footer class="mt-6 pb-12 text-center text-xs text-slate-500">
-      © <span id="y"></span> Samet Tenekeci · Built with HTML + Tailwind · Hosted on GitHub Pages
+      © <span id="y"></span> Samet Tenekeci · Hosted on GitHub Pages
     </footer>
   </main>
 
-  <!-- Scroll to Top Button (only visible on mobile) -->
+  <!-- Scroll to Top Button (only visible on mobile)
   <button id="scrollTopBtn"
     class="sm:hidden fixed bottom-6 right-6 bg-slate-900 text-white p-3 rounded-xl shadow-lg hover:bg-slate-800 focus:outline-none hidden">
     ↑
@@ -1079,11 +1207,23 @@
     scrollTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
-  </script>
+  </script>-->
 
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    const homeMenu = document.querySelector('.home-menu');
+    document.addEventListener('click', (event) => {
+      const target = event.target instanceof Element ? event.target : null;
+      if (!homeMenu || !target) return;
+
+      if (target.closest('.home-menu__panel a')) {
+        homeMenu.removeAttribute('open');
+      } else if (homeMenu.hasAttribute('open') && !target.closest('.home-menu')) {
+        homeMenu.removeAttribute('open');
+      }
+    });
   </script>
 
   <script>
