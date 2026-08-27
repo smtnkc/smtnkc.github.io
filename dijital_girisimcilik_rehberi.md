@@ -7,6 +7,8 @@ lang: tr
 permalink: /dijital-girisimcilik-rehberi/
 canonical_url: https://smtnkc.github.io/dijital-girisimcilik-rehberi/
 og_locale: tr_TR
+blog_featured: true
+blog_order: 10
 home_label: smtnkc.github.io ana sayfasına dön
 language_label: Dil
 toc_label: Bu sayfada

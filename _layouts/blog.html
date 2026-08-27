@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>{{ page.seo_title | escape }}</title>
+  <meta name="description" content="{{ page.description | escape }}">
+  <meta name="author" content="Samet Tenekeci">
+  <link rel="canonical" href="{{ page.canonical_url }}">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Samet Tenekeci">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:title" content="{{ page.seo_title | escape }}">
+  <meta property="og:description" content="{{ page.description | escape }}">
+  <meta property="og:url" content="{{ page.canonical_url }}">
+
+  <link rel="icon" href="{{ '/favicon.png' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/controls.css' | relative_url }}?v=15">
+  <link rel="stylesheet" href="{{ '/assets/guide.css' | relative_url }}?v=42">
+  <link rel="stylesheet" href="{{ '/assets/blog.css' | relative_url }}?v=3">
+  <script src="{{ '/assets/theme.js' | relative_url }}?v=5"></script>
+</head>
+
+<body class="blog-page">
+  <header class="guide-header">
+    <div class="guide-header__inner">
+      <div class="site-controls">
+        <button class="control-toggle theme-toggle" type="button" data-theme-toggle
+          data-label-dark="Koyu modu kullan" data-label-light="Açık modu kullan"
+          aria-label="Koyu modu kullan" aria-pressed="false">
+          <span class="control-toggle__segment theme-toggle__light" aria-hidden="true">☀</span>
+          <span class="control-toggle__segment theme-toggle__dark" aria-hidden="true">☾</span>
+          <span class="control-sr-only">Renk temasını değiştir</span>
+        </button>
+
+        <button class="control-toggle language-toggle blog-language-toggle" type="button"
+          data-blog-language-toggle aria-label="Switch to English" title="Switch to English">
+          <span class="control-toggle__segment control-toggle__segment--flag" lang="tr"
+            data-blog-language="tr" aria-current="page">
+            <img class="control-toggle__flag" src="https://hatscripts.github.io/circle-flags/flags/tr.svg" width="20"
+              height="20" alt="">
+            <span class="control-sr-only">Türkçe</span>
+          </span>
+          <span class="control-toggle__segment control-toggle__segment--flag" lang="en"
+            data-blog-language="en">
+            <img class="control-toggle__flag" src="https://hatscripts.github.io/circle-flags/flags/gb.svg" width="20"
+              height="20" alt="">
+            <span class="control-sr-only">English</span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="blog-shell">
+    <header class="blog-intro">
+      <p class="blog-intro__eyebrow">smtnkc.github.io</p>
+      <h1>{{ page.title }}</h1>
+      <p data-blog-description data-description-tr="{{ page.description_tr | escape }}"
+        data-description-en="{{ page.description_en | escape }}">{{ page.description_tr }}</p>
+    </header>
+
+    {% assign featured_pages = site.pages | where: "blog_featured", true | sort: "blog_order" %}
+    {% assign turkish_pages = featured_pages | where: "lang", "tr" %}
+    {% assign english_pages = featured_pages | where: "lang", "en" %}
+
+    <section class="blog-language" data-blog-language-panel="tr" aria-label="Türkçe yazılar">
+      <div class="blog-grid">
+        {% for item in turkish_pages %}
+        <a class="blog-card" href="{{ item.url | relative_url }}" lang="tr">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+          <span class="blog-card__action">Yazıyı aç <span aria-hidden="true">→</span></span>
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="blog-language" data-blog-language-panel="en" aria-label="English posts" hidden>
+      <div class="blog-grid">
+        {% for item in english_pages %}
+        <a class="blog-card" href="{{ item.url | relative_url }}" lang="en">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+          <span class="blog-card__action">Open article <span aria-hidden="true">→</span></span>
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © {{ site.time | date: "%Y" }} Samet Tenekeci · Hosted on GitHub Pages
+    </footer>
+  </main>
+  <script src="{{ '/assets/blog.js' | relative_url }}?v=1"></script>
+</body>
+
+</html>

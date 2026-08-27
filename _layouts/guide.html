@@ -10,9 +10,11 @@
   <meta name="author" content="Samet Tenekeci">
 
   <link rel="canonical" href="{{ page.canonical_url }}">
-  <link rel="alternate" hreflang="en" href="https://smtnkc.github.io/digital-entrepreneurship-guide/">
-  <link rel="alternate" hreflang="tr" href="https://smtnkc.github.io/dijital-girisimcilik-rehberi/">
-  <link rel="alternate" hreflang="x-default" href="https://smtnkc.github.io/digital-entrepreneurship-guide/">
+  {% assign alternate_en = page.alternate_en | default: '/digital-entrepreneurship-guide/' %}
+  {% assign alternate_tr = page.alternate_tr | default: '/dijital-girisimcilik-rehberi/' %}
+  <link rel="alternate" hreflang="en" href="{{ alternate_en | absolute_url }}">
+  <link rel="alternate" hreflang="tr" href="{{ alternate_tr | absolute_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ alternate_en | absolute_url }}">
 
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Samet Tenekeci">
@@ -20,20 +22,34 @@
   <meta property="og:title" content="{{ page.seo_title | escape }}">
   <meta property="og:description" content="{{ page.description | escape }}">
   <meta property="og:url" content="{{ page.canonical_url }}">
+  {% if page.og_image %}
+  <meta property="og:image" content="{{ page.og_image | absolute_url }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.seo_title | escape }}">
+  <meta name="twitter:description" content="{{ page.description | escape }}">
+  <meta name="twitter:image" content="{{ page.og_image | absolute_url }}">
+  {% endif %}
 
   <link rel="icon" href="{{ '/favicon.png' | relative_url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/controls.css' | relative_url }}?v=15">
-  <link rel="stylesheet" href="{{ '/assets/guide.css' | relative_url }}?v=39">
+  <link rel="stylesheet" href="{{ '/assets/guide.css' | relative_url }}?v=42">
   <script src="{{ '/assets/theme.js' | relative_url }}?v=5"></script>
 </head>
 
-<body>
+<body{% if page.table_mode == 'catalog' or page.page_mode == 'list' %} class="{% if page.table_mode == 'catalog' %}guide-catalog-page{% endif %}{% if page.page_mode == 'list' %}guide-list-page{% endif %}"{% endif %}>
 
   <header class="guide-header">
     <div class="guide-header__inner">
+      <a class="guide-home" {% if page.lang == 'en' %}href="{{ '/blog/?lang=en' | relative_url }}"{% else %}href="{{ '/blog/' | relative_url }}"{% endif %}
+        aria-label="{% if page.lang == 'tr' %}Blog ana sayfasına dön{% else %}Back to the blog home page{% endif %}"
+        title="{% if page.lang == 'tr' %}Blog ana sayfası{% else %}Blog home{% endif %}">
+        <span aria-hidden="true">←</span>
+        <span>Blog</span>
+      </a>
+
       <div class="site-controls">
         <button class="control-toggle theme-toggle" type="button" data-theme-toggle
           data-label-dark="{% if page.lang == 'tr' %}Koyu modu kullan{% else %}Use dark mode{% endif %}"
@@ -47,8 +63,8 @@
         </button>
 
         <a class="control-toggle language-toggle" {% if page.lang=='tr' %}
-          href="{{ '/digital-entrepreneurship-guide/' | relative_url }}" hreflang="en" aria-label="Switch to English"
-          title="Switch to English" {% else %} href="{{ '/dijital-girisimcilik-rehberi/' | relative_url }}"
+          href="{{ alternate_en | relative_url }}" hreflang="en" aria-label="Switch to English"
+          title="Switch to English" {% else %} href="{{ alternate_tr | relative_url }}"
           hreflang="tr" aria-label="Türkçeye geç" title="Türkçeye geç" {% endif %}>
           <span class="control-toggle__segment control-toggle__segment--flag" lang="tr" {% if page.lang=='tr'
             %}aria-current="page" {% endif %}>
@@ -64,6 +80,7 @@
           </span>
         </a>
 
+        {% unless page.table_mode == 'catalog' %}
         <details class="guide-menu">
           <summary class="guide-menu__toggle"
             aria-label="{% if page.lang == 'tr' %}Bölüm menüsünü aç{% else %}Open section menu{% endif %}"
@@ -74,17 +91,20 @@
             <ol data-guide-toc></ol>
           </nav>
         </details>
+        {% endunless %}
       </div>
     </div>
   </header>
 
   <main class="guide-shell">
+    {% unless page.table_mode == 'catalog' %}
     <aside class="guide-sidebar" aria-label="{{ page.toc_label }}">
       <nav class="guide-toc">
         <p class="guide-toc__title">{{ page.toc_label }}</p>
         <ol data-guide-toc></ol>
       </nav>
     </aside>
+    {% endunless %}
 
     <div class="guide-main">
       <article class="guide-content" id="guide-content">
@@ -97,7 +117,7 @@
     </div>
   </main>
 
-  <script src="{{ '/assets/guide.js' | relative_url }}?v=12"></script>
+  <script src="{{ '/assets/guide.js' | relative_url }}?v=15"></script>
 </body>
 
 </html>

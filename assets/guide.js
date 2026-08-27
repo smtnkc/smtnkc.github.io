@@ -1,8 +1,9 @@
 (() => {
-  const guidePaths = new Set([
-    '/digital-entrepreneurship-guide/',
-    '/dijital-girisimcilik-rehberi/'
-  ]);
+  const guidePaths = new Set(
+    Array.from(document.querySelectorAll('link[rel="alternate"][hreflang]'))
+      .map((link) => new URL(link.href, window.location.href).pathname)
+  );
+  guidePaths.add(window.location.pathname);
   let renderedPath = window.location.pathname;
 
   const slugify = (text) => text
@@ -39,11 +40,14 @@
   const groupGuideSections = () => {
     const content = document.querySelector('.guide-content');
     if (!content) return;
+    const isToolCatalog = document.body.classList.contains('guide-catalog-page');
 
     if (!Array.from(content.children).some((child) => child.classList.contains('guide-section'))) {
       let currentSection = null;
       Array.from(content.childNodes).forEach((node) => {
-        const startsSection = node instanceof Element && node.matches('h2');
+        const startsSection = node instanceof Element && (
+          node.matches('h2') || (isToolCatalog && node.matches('table'))
+        );
 
         if (!currentSection || startsSection) {
           currentSection = document.createElement('section');
@@ -88,15 +92,18 @@
 
   const wrapGuideTables = () => {
     const isTurkish = document.documentElement.lang.toLowerCase().startsWith('tr');
+    const isToolCatalog = document.body.classList.contains('guide-catalog-page');
 
     document.querySelectorAll('.guide-content table').forEach((table) => {
-      if (table.parentElement?.classList.contains('guide-table-scroll')) return;
+      if (table.parentElement?.matches('.guide-table-scroll, .guide-tool-grid')) return;
 
       const wrapper = document.createElement('div');
-      wrapper.className = 'guide-table-scroll';
-      wrapper.tabIndex = 0;
-      wrapper.setAttribute('role', 'region');
-      wrapper.setAttribute('aria-label', isTurkish ? 'Kaydırılabilir tablo' : 'Scrollable table');
+      wrapper.className = isToolCatalog ? 'guide-tool-grid' : 'guide-table-scroll';
+      if (!isToolCatalog) {
+        wrapper.tabIndex = 0;
+        wrapper.setAttribute('role', 'region');
+        wrapper.setAttribute('aria-label', isTurkish ? 'Kaydırılabilir tablo' : 'Scrollable table');
+      }
       table.before(wrapper);
       wrapper.appendChild(table);
     });
@@ -190,7 +197,11 @@
       'meta[property="og:locale"]',
       'meta[property="og:title"]',
       'meta[property="og:description"]',
-      'meta[property="og:url"]'
+      'meta[property="og:url"]',
+      'meta[property="og:image"]',
+      'meta[name="twitter:title"]',
+      'meta[name="twitter:description"]',
+      'meta[name="twitter:image"]'
     ].forEach((selector) => {
       const current = document.querySelector(selector);
       const next = nextDocument.querySelector(selector);
@@ -200,9 +211,21 @@
     const currentCanonical = document.querySelector('link[rel="canonical"]');
     const nextCanonical = nextDocument.querySelector('link[rel="canonical"]');
     if (currentCanonical && nextCanonical) copyAttribute(currentCanonical, nextCanonical, 'href');
+
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((current) => {
+      const hreflang = current.getAttribute('hreflang');
+      const next = nextDocument.querySelector(`link[rel="alternate"][hreflang="${hreflang}"]`);
+      if (next) copyAttribute(current, next, 'href');
+    });
   };
 
   const updateHeader = (nextDocument) => {
+    const currentHome = document.querySelector('.guide-home');
+    const nextHome = nextDocument.querySelector('.guide-home');
+    if (currentHome && nextHome) {
+      currentHome.replaceWith(document.importNode(nextHome, true));
+    }
+
     const currentTheme = document.querySelector('[data-theme-toggle]');
     const nextTheme = nextDocument.querySelector('[data-theme-toggle]');
     if (currentTheme && nextTheme) {

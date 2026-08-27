@@ -7,6 +7,8 @@ lang: en
 permalink: /digital-entrepreneurship-guide/
 canonical_url: https://smtnkc.github.io/digital-entrepreneurship-guide/
 og_locale: en_US
+blog_featured: true
+blog_order: 10
 home_label: Back to smtnkc.github.io
 language_label: Language
 toc_label: On this page
