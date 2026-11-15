@@ -2,6 +2,7 @@ import type { ReactNode } from "react"
 import { ArrowUpRightIcon } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
+import { cn } from "@/lib/utils"
 
 type PublicationListProps = {
   children: ReactNode
@@ -16,7 +17,7 @@ export function PublicationList({ children }: PublicationListProps) {
 }
 
 type PublicationEntryProps = {
-  kind: "journal" | "conference"
+  kind: "journal" | "conference" | "preprint"
   authors: string
   title: string
   venue: string
@@ -44,19 +45,26 @@ export function PublicationEntry({
   year,
   href,
 }: PublicationEntryProps) {
-  const isJournal = kind === "journal"
+  const labels = {
+    journal: "Journal",
+    conference: "Conference",
+    preprint: "Preprint",
+  }
 
   return (
     <li className="pl-1">
       <p className="text-typeset leading-relaxed text-foreground">
         <Badge
-          className={
-            isJournal
-              ? "mr-2 bg-blue-50 align-middle text-blue-700 dark:bg-blue-950 dark:text-blue-300"
-              : "mr-2 bg-green-50 align-middle text-green-700 dark:bg-green-950 dark:text-green-300"
-          }
+          variant={kind === "preprint" ? "secondary" : "default"}
+          className={cn(
+            "mr-2 align-middle",
+            kind === "journal" &&
+              "bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300",
+            kind === "conference" &&
+              "bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300"
+          )}
         >
-          {isJournal ? "Journal" : "Conference"}
+          {labels[kind]}
         </Badge>
         <HighlightedAuthors authors={authors} />. “{title}”. <em>{venue}</em>,{" "}
         {year}.{" "}

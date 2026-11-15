@@ -140,6 +140,24 @@ paperUrl="https://doi.org/10.1016/j.jss.2025.112638"
 <PublicationList>
 
 <PublicationEntry
+  kind="preprint"
+  authors="Tenekeci S, Uysal AS, Demircan EF, Kurt İC, Türkün AE, Doğan S"
+  title="Web-based fully automated 3D facial landmark localization and sagittal skeletal pattern classification"
+  venue="SSRN"
+  year="2026"
+  href="https://doi.org/10.2139/ssrn.7450717"
+/>
+
+<PublicationEntry
+  kind="conference"
+  authors="Tenekeci S"
+  title="ProtPert: Homology-Aware Evaluation of Post-hoc Embedding Perturbations for Protein Language Models"
+  venue="38th Benelux Conference on Artificial Intelligence and 35th Belgian-Dutch Conference on Machine Learning (BNAIC/BeNeLearn 2026)"
+  year="Maastricht, the Netherlands, 2026"
+  href="https://openreview.net/forum?id=BA1WSb7Bje"
+/>
+
+<PublicationEntry
   kind="journal"
   authors="Tenekeci S, Sezgin E, Tekir S"
   title="A contrastive learning framework for efficient viral escape prediction"
