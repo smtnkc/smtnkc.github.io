@@ -47,7 +47,7 @@ type CvHeroProps = {
 }
 
 export const CV_HERO_BIO =
-  "Applied AI researcher and engineer with experience developing NLP and machine learning systems for healthcare, biomedical informatics, and software analytics. Delivered multiple AI-driven tools from research to usable software products, including biomedical prediction systems, domain-adapted language models, and data-driven decision support applications. Experienced in leading interdisciplinary teams, managing AI projects, and working with complex real-world datasets in clinical and research environments."
+  "AI researcher and engineer with experience developing machine learning systems for healthcare, computational biology, biomedical informatics, and software analytics. Delivered multiple AI-driven tools from research prototypes to functional software, including biomedical prediction systems, domain-adapted language models, and data-driven decision support applications. Experienced in leading interdisciplinary teams, managing AI projects, and working with complex real-world datasets in clinical and research environments."
 
 export function CvHero({ bio = CV_HERO_BIO }: CvHeroProps) {
   return (
@@ -74,7 +74,7 @@ export function CvHero({ bio = CV_HERO_BIO }: CvHeroProps) {
           </h1>
         </CardTitle>
         <p className="text-base leading-7 text-balance text-foreground sm:text-lg">
-          Applied AI Scientist · Machine Learning · Computational Biology
+          AI Researcher &amp; Engineer · Biomedical AI · Computational Biology
         </p>
         <p className="max-w-2xl text-typeset leading-relaxed text-muted-foreground">
           {bio}
